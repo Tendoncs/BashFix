@@ -30,14 +30,14 @@ git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
 test -s $git_completion_script && source $git_completion_script
 
 # A more colorful prompt - Updated to work with el caption
-c_reset="$(tput setaf 2)"
+c_reset='\[\e[0m\]'
 c_path="$(tput setaf 1)"
 c_git_dirty="$(tput setaf 1)"
 c_git_clean="$(tput setaf 2)"
 c_white="$(tput setaf 7)"
 
 # PS1 is the variable for the prompt you see everytime you hit enter
-PROMPT_COMMAND=$PROMPT_COMMAND' PS1="${c_path}\W${c_reset}$(git_prompt) :> "'
+PROMPT_COMMAND=$PROMPT_COMMAND' PS1="${c_path}\W${c_reset}$(git_prompt)${c_reset} :> "'
 
 # export PS1='\n\[\033[0;31m\]\W\033[0m\]$(git_prompt)${c_reset} ] :> '
 export PS1='\n\[\033[0;31m\]\W\[\033[0m\]$(git_prompt)\[\033[0m\]:> '
